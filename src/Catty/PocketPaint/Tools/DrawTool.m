@@ -89,7 +89,6 @@ static const CGFloat kPointMinDistanceSquared = kPointMinDistance * kPointMinDis
 
 -(void)drawLine:(CGPoint)startPoint
 {
-    
     CGFloat dx = startPoint.x - currentPoint.x;
     CGFloat dy = startPoint.y - currentPoint.y;
     if (currentPoint.x == -1 && currentPoint.y == -1){
@@ -108,15 +107,12 @@ static const CGFloat kPointMinDistanceSquared = kPointMinDistance * kPointMinDis
     CGPoint mid1 = [self midPoint:lastPoint and:beforeLastPoint];
     CGPoint mid2 = [self midPoint:currentPoint and:lastPoint];
     
-    
-    
     // 1
     UIGraphicsBeginImageContext(self.canvas.drawView.frame.size);
-//    let context = UIGraphicsGetCurrentContext()
+    //    let context = UIGraphicsGetCurrentContext()
     [self.canvas.drawView.image drawInRect:CGRectMake(self.canvas.drawView.frame.origin.x,self.canvas.drawView.frame.origin.y, self.canvas.drawView.frame.size.width, self.canvas.drawView.frame.size.height)];
     
     // 2
-
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), mid1.x, mid1.y);
     CGContextAddQuadCurveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y, mid2.x, mid2.y);
 
@@ -131,7 +127,7 @@ static const CGFloat kPointMinDistanceSquared = kPointMinDistance * kPointMinDis
         default:
             break;
     }
-    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), self.canvas.thickness );
+    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), self.canvas.thickness);
     CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), self.canvas.red, self.canvas.green, self.canvas.blue, 1.0);
     if (self.canvas.isEraser) {
         CGContextSetBlendMode(UIGraphicsGetCurrentContext(),kCGBlendModeClear);
